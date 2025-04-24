@@ -1,0 +1,65 @@
+objective
+
+Use SQL queries to extract and analyze data from a relational e-commerce database.
+
+Tools Used
+
+MySQL Workbench 
+
+SQLite (for testing locally)
+
+Dataset
+
+Ecommerce_SQL_Database
+
+Tables used: Orders, Customers, Products, Regions
+
+Part 1: SQL Queries
+
+1. Difference between WHERE and HAVING
+
+SELECT Category, SUM(Sales) AS Total_Sales
+FROM Orders
+GROUP BY Category
+HAVING SUM(Sales) > 5000;
+
+POV: HAVING is used to filter aggregated results; WHERE is used to filter rows before aggregation.
+
+2. INNER JOIN (Joining Orders with Customers)
+
+SELECT o.OrderID, c.CustomerName
+FROM Orders o
+INNER JOIN Customers c ON o.CustomerID = c.CustomerID;
+
+3. Calculate Average Revenue per User
+
+SELECT CustomerID, AVG(Sales) AS Average_Revenue
+FROM Orders
+GROUP BY CustomerID;
+
+4. Subquery – Top Category by Total Sales
+
+SELECT Category, SUM(Sales) AS Total_Sales
+FROM Orders
+GROUP BY Category
+HAVING SUM(Sales) = (
+    SELECT MAX(TotalSales) FROM (
+        SELECT Category, SUM(Sales) AS TotalSales
+        FROM Orders
+        GROUP BY Category
+    ) AS SalesByCategory
+);
+
+5. Optimizing a Query with Indexes
+
+-- Assume index exists on CustomerID
+EXPLAIN SELECT * FROM Orders WHERE CustomerID = 1024;
+
+6. Creating a View
+
+CREATE VIEW Sales_By_Region AS
+SELECT Region, SUM(Sales) AS Total_Sales
+FROM Orders
+GROUP BY Region;
+
+7. Handling NULL Values
