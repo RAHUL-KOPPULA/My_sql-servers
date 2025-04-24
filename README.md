@@ -15,3 +15,5 @@ Analyze e-commerce data using SQL queries.
    
 ## Tools
 MySQL Workbench / SQLite
+
+as my data consisit 9000 rows difficult to upload in repository
