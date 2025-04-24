@@ -12,9 +12,6 @@ Analyze e-commerce data using SQL queries.
 5. Indexed Query Performance
 6. View Creation
 7. NULL Handling
-
-## Output
-See screenshots folder.
-
+8. 
 ## Tools
 MySQL Workbench / SQLite
